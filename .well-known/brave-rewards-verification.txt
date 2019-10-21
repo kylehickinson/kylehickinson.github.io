@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: kylehickinson.com
+Token: 737151ae89b0ffa33dd1d8c8223ddb544219f191edfb830709a713fe4ad7a6dd
