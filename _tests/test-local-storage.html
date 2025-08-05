@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div> 
+<p id="storage" style="font-size:40px;text-align:center;"></p>
+
+<button onclick="startLoop()" style="height:200px;width:100%;font-size:30px;display:block;text-align:center;">Start Writing to Local Storage</button>
+<button onclick="stopLoop()" style="height:200px;width:100%;font-size:30px;display:block;text-align:center;">Stop</button>
+
+</div>
+
+<script>
+
+const addToStorage = () => {
+    let count = localStorage.getItem("count");
+    count = +count + +1;
+    localStorage.setItem("count", count);
+
+    document.getElementById("storage").innerHTML = "Storage: " + count;
+}
+
+var timerId;
+
+const stopLoop = () => {
+    clearInterval(timerId);
+}
+
+const startLoop = () => {
+    if (typeof(Storage) !== "undefined") {
+        localStorage.clear();
+        clearInterval(timerId);
+        timerId = window.setInterval(addToStorage, 1);
+    } else {
+        document.getElementById("storage").innerHTML = "Storage unavailable";
+    }
+}
+
+const onload = () => {
+    if (typeof(Storage) !== "undefined") {
+        let count = localStorage.getItem("count");
+        if (count !== "undefined" && count !== null) {
+            document.getElementById("storage").innerHTML = "Storage: " + count;
+        } else {
+            document.getElementById("storage").innerHTML = "No storage found";
+        }
+    } else {
+        document.getElementById("storage").innerHTML = "Storage unavailable";
+    }
+}
+
+window.onload = onload;
+
+</script>
+
+</body>
+</html>
